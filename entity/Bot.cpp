@@ -1,7 +1,7 @@
 #include "pch.h"
 #include "Bot.h"
 
-void Bot::update(const LogicalGrid& grid)
+void Bot::update(const DungeonGrid& grid)
 {
     auto current_time = std::chrono::steady_clock::now();
     auto time_since_last_move = std::chrono::duration_cast<std::chrono::milliseconds>(current_time - m_last_move_time).count();

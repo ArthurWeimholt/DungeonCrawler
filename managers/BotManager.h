@@ -2,7 +2,7 @@
 
 #pragma once
 #include "../entity/Bot.h"
-#include "LogicalGrid.h"
+#include "DungeonGrid.h"
 
 class BotManager
 {

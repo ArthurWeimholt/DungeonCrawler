@@ -1,7 +1,7 @@
 #pragma once
 #include "BotManager.h"
 #include "../entity/Player.h"
-#include "../logic/LogicalGrid.h"
+#include "../logic/DungeonGrid.h"
 #include "../sounds/SoundPlayer.h"
 
 class GameManager
@@ -24,7 +24,7 @@ private:
     void handle_collisions();
     bool pause_menu(); // true for resume, false for quit
 
-    // Manages the logical grid, player and bot manager
+    // Manages the dungeon grid, player and bot manager
     DungeonGrid m_grid;
     Player m_player;
     BotManager m_bot_manager;

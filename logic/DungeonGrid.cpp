@@ -2,7 +2,7 @@
 // Created by Arthur Weimholt
 
 #include "pch.h"
-#include "LogicalGrid.h"
+#include "DungeonGrid.h"
 #include "../render/RenderGrid.h"
 
 DungeonGrid::DungeonGrid()
