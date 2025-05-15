@@ -9,10 +9,10 @@ class BotManager
 public:
     BotManager() = default;
 
-    void spawn_bot(int y, int x, std::vector<Offset> shape, int color, int msec)
+    void spawn_bot(int y, int x, std::vector<Offset> shape, BotAttributes bot_attr = {"Spider", 12, 6, 250, 100, RED})
     {
         // Create a new bot and add it to the list
-        auto bot = std::make_unique<Bot>(y, x, shape, color, msec);
+        auto bot = std::make_unique<Bot>(y, x, shape, bot_attr);
         bot->draw();
         m_bots.push_back(std::move(bot));
     }

@@ -34,7 +34,7 @@ GameManager::GameManager()
 
     // Initialize bots and player
     initialize_player();
-    spawn_bots(15, 250);
+    spawn_bots(15);
 
     // Play game start sound
     m_sound.play(SoundEffect::GameStart);
@@ -101,8 +101,14 @@ void GameManager::handle_collisions()
     {
         if (check_collision(*bot, m_player))
         {
-            //m_game_over = true;
-            m_sound.play(SoundEffect::Death);
+            int damage = bot->roll_damage();
+            std::cerr << "Bot damage: " << damage << std::endl;
+            m_player.take_damage(damage);
+            if(m_player.is_dead())
+            {
+                m_sound.play(SoundEffect::Death);
+                m_game_over = true;
+            }
             break;
         }
     }
@@ -138,7 +144,7 @@ void GameManager::initialize_player()
 }
 
 // Number of bots and msec time before bot is allowed to move
-void GameManager::spawn_bots(int count, int msec)
+void GameManager::spawn_bots(int count, BotAttributes bot_attr)
 {
     // Spawns and draws the bots
     for (int i = 0; i < count; ++i)
@@ -150,7 +156,7 @@ void GameManager::spawn_bots(int count, int msec)
         // Calculate a valid position based on the random room
         int y = room_y * (ROOM_HEIGHT + WALL) + WALL;
         int x = room_x * (ROOM_WIDTH + WALL) + WALL + 1;
-        m_bot_manager.spawn_bot(y, x, SPIDER_SHAPE, RED, msec);
+        m_bot_manager.spawn_bot(y, x, SPIDER_SHAPE, bot_attr);
     }
 }
 
