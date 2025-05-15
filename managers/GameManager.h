@@ -20,7 +20,7 @@ public:
 
 private:
     void initialize_player();
-    void spawn_bots(int count, BotAttributes bot_attr = {"Spider", 12, 6, 250, 100, RED});
+    void spawn_bots(int count, BotAttributes bot_attr = {"Spider", 3, 2, 250, 100, RED});
     bool check_collision(const Entity& a, const Entity& b) const;
     void handle_collisions();
     bool pause_menu(); // true for resume, false for quit
