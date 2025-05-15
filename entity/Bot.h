@@ -3,6 +3,7 @@
 #pragma once
 #include <chrono>
 #include "Entity.h"
+#include "logic/MovementValidator.h"
 
 class Bot : public Entity
 {
@@ -13,7 +14,7 @@ public:
     {
     }
 
-    void update(const DungeonGrid& grid);
+    void update(const MovementValidator& movement);
 protected:
     int m_msec_timer; // Time for bot to move
     std::chrono::steady_clock::time_point m_last_move_time;  // Tracks last movement time

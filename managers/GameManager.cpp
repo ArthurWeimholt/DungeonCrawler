@@ -21,8 +21,9 @@ const std::vector<Offset> SPIDER_SHAPE =
 
 GameManager::GameManager()
     : m_grid(),              // Generates the grid
-      m_bot_manager(m_grid), // Creates the bot manager
-      m_game_over(false)
+      m_movement(m_grid),    // Movement validation class
+      m_bot_manager(),       // Creates the bot manager (Spawn and Movement)
+      m_game_over(false)     
 {
     // Initialize sound
     if (!m_sound.init())
@@ -47,7 +48,7 @@ GameManager::~GameManager()
 // Updates the bots and handles player vs monster collisions
 void GameManager::update()
 {
-    m_bot_manager.update_bots();
+    m_bot_manager.update_bots(m_movement);
     handle_collisions();
 }
 
@@ -82,7 +83,7 @@ void GameManager::handle_input(int ch)
 
     if (dy != 0 || dx != 0)
     {
-        if (m_grid.can_move(m_player.y(), m_player.x(), dy, dx, m_player.get_shape()))
+        if (m_movement.can_move(m_player.y(), m_player.x(), dy, dx, m_player.get_shape()))
         {
             m_player.move(dy, dx);
             m_sound.play(SoundEffect::Footstep);

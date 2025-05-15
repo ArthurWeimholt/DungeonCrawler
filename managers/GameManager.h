@@ -2,6 +2,7 @@
 #include "BotManager.h"
 #include "../entity/Player.h"
 #include "../logic/DungeonGrid.h"
+#include "../logic/MovementValidator.h"
 #include "../sounds/SoundPlayer.h"
 
 class GameManager
@@ -26,6 +27,7 @@ private:
 
     // Manages the dungeon grid, player and bot manager
     DungeonGrid m_grid;
+    MovementValidator m_movement;
     Player m_player;
     BotManager m_bot_manager;
     SoundPlayer m_sound;

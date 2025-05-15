@@ -108,20 +108,3 @@ void DungeonGrid::generate_grid(int y, int x)
         }
     }
 }
-
-bool DungeonGrid::can_move(int pos_y, int pos_x, int dy, int dx, const std::vector<Offset>& shape) const
-{
-    for (const auto& part : shape) 
-    {
-        int new_y = pos_y + part.dy + dy;
-        int new_x = pos_x + part.dx + dx;
-
-        if (new_y < 0 || new_y >= SCREEN_HEIGHT ||
-            new_x < 0 || new_x >= SCREEN_WIDTH ||
-            m_maze[new_y][new_x] != ' ')
-        {
-            return false;
-        }
-    }
-    return true;
-}
