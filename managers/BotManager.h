@@ -7,7 +7,7 @@
 class BotManager
 {
 public:
-    BotManager(LogicalGrid& grid)
+    BotManager(DungeonGrid& grid)
         : m_grid(grid)
     {}
 
@@ -38,6 +38,6 @@ public:
     const std::vector<std::unique_ptr<Bot>>& get_bots() const { return m_bots; }
 
 private:
-    LogicalGrid& m_grid;  // Reference to the grid for bot movement validation
+    DungeonGrid& m_grid;  // Reference to the grid for bot movement validation
     std::vector<std::unique_ptr<Bot>> m_bots;  // Vector to hold all bots
 };

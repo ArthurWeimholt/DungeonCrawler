@@ -7,11 +7,11 @@
 #include "../render/RenderGrid.h"
 #include "../Constants.h"
 
-class LogicalGrid
+class DungeonGrid
 {
 public:
-	LogicalGrid();
-	~LogicalGrid(){};
+	DungeonGrid();
+	~DungeonGrid(){};
 
 	// Grid generation 
 	void initialize_grid();

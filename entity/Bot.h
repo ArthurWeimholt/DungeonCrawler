@@ -13,7 +13,7 @@ public:
     {
     }
 
-    void update(const LogicalGrid& grid);
+    void update(const DungeonGrid& grid);
 protected:
     int m_msec_timer; // Time for bot to move
     std::chrono::steady_clock::time_point m_last_move_time;  // Tracks last movement time

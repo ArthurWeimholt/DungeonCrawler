@@ -5,14 +5,14 @@
 #include "LogicalGrid.h"
 #include "../render/RenderGrid.h"
 
-LogicalGrid::LogicalGrid()
+DungeonGrid::DungeonGrid()
 {
     initialize_grid();    // Initialize maze
     generate_grid(0, 0);  // Generate maze by tearing down walls
 }
 
 // Draws walls everywhere initially
-void LogicalGrid::initialize_grid() 
+void DungeonGrid::initialize_grid() 
 {
     for (int y = 0; y < SCREEN_HEIGHT; y++) 
     {
@@ -31,7 +31,7 @@ void LogicalGrid::initialize_grid()
 }
 
 // Function to "knock down" a wall between two rooms
-void LogicalGrid::remove_wall_between(int room_y, int room_x, int dy, int dx)
+void DungeonGrid::remove_wall_between(int room_y, int room_x, int dy, int dx)
 {
     // Start at the top-left corner of the current room
     int y = room_y * (ROOM_HEIGHT + WALL) + WALL;
@@ -72,7 +72,7 @@ void LogicalGrid::remove_wall_between(int room_y, int room_x, int dy, int dx)
 }
 
 // Takes the rooms generated and knocks down walls recursively to generate a maze
-void LogicalGrid::generate_grid(int y, int x) 
+void DungeonGrid::generate_grid(int y, int x) 
 {
     m_rooms_visited[y][x] = true;
 
@@ -109,7 +109,7 @@ void LogicalGrid::generate_grid(int y, int x)
     }
 }
 
-bool LogicalGrid::can_move(int pos_y, int pos_x, int dy, int dx, const std::vector<Offset>& shape) const
+bool DungeonGrid::can_move(int pos_y, int pos_x, int dy, int dx, const std::vector<Offset>& shape) const
 {
     for (const auto& part : shape) 
     {

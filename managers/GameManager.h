@@ -25,7 +25,7 @@ private:
     bool pause_menu(); // true for resume, false for quit
 
     // Manages the logical grid, player and bot manager
-    LogicalGrid m_grid;
+    DungeonGrid m_grid;
     Player m_player;
     BotManager m_bot_manager;
     SoundPlayer m_sound;
