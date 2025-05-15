@@ -31,7 +31,7 @@ int main()
         game.update(); // Updates the bots
         game.handle_input(getch()); // Handle user input
         refresh();                  // Update the screen
-        usleep(10000);              // Sleep for 10ms
+        //usleep(10000);              // Sleep for 10ms
     }
 
     return 0;

@@ -2,15 +2,15 @@
 
 #pragma once
 #include <chrono>
-#include "Entity.h"
+#include "Actor.h"
 #include "logic/MovementValidator.h"
 
-class Bot : public Entity
+class Bot : public Actor
 {
 public:
 
     Bot(int y, int x, std::vector<Offset> shape, int color, int msec)
-        : Entity(y, x, shape, color), m_msec_timer(msec) // color pair RED for bots
+        : Actor(y, x, shape, color, 100), m_msec_timer(msec) // color pair RED for bots
     {
     }
 

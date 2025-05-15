@@ -1,7 +1,9 @@
 #pragma once
 #include "../render/RenderGrid.h"
 
-// Entity can be human, sprite, or any other movable object
+// Entity can be human, sprite, item, or doors
+// This serves as the base for spatial, movable, and drawable things
+
 class Entity
 {
 public:
