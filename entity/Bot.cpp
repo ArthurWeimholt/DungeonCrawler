@@ -14,7 +14,6 @@ void Bot::update(const DungeonGrid& grid)
 
         if (grid.can_move(y(), x(), dy, dx, m_shape))
         {
-            clear();
             move(dy, dx);
             draw();
         }
