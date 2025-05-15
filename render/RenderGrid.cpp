@@ -28,14 +28,14 @@ void RenderGrid::draw_entity(int y, int x, const std::vector<Offset>& shape, int
 }
 
 // Draws the current state of the maze/grid
-void RenderGrid::draw_grid(const std::array<std::array<char, SCREEN_WIDTH>, SCREEN_HEIGHT> &m_maze)
+void RenderGrid::draw_grid(const std::array<std::array<char, SCREEN_WIDTH>, SCREEN_HEIGHT> &grid)
 {
     attron(COLOR_PAIR(3));
     for (int y = 0; y < SCREEN_HEIGHT; ++y) 
     {
         for (int x = 0; x < SCREEN_WIDTH; ++x) 
         {
-            mvaddch(y, x, m_maze[y][x]);
+            mvaddch(y, x, grid[y][x]);
         }
     }
     attroff(COLOR_PAIR(3));

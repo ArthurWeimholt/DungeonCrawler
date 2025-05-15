@@ -21,10 +21,10 @@ void DungeonGrid::initialize_grid()
             // If room height + wall is 0 or room width + wall is 0 then lets add a wall
             if (y % (ROOM_HEIGHT + WALL) == 0 || x % (ROOM_WIDTH + WALL) == 0) 
             {
-                m_maze[y][x] = '#';  // Set wall
+                m_grid[y][x] = '#';  // Set wall
             } else 
             {
-                m_maze[y][x] = ' ';  // Set hallway
+                m_grid[y][x] = ' ';  // Set hallway
             }
         }
     }
@@ -42,7 +42,7 @@ void DungeonGrid::remove_wall_between(int room_y, int room_x, int dy, int dx)
         // Knock down the wall BELOW the room
         for (int i = 0; i < ROOM_WIDTH; ++i)
         {
-            m_maze[y + ROOM_HEIGHT][x + i] = ' ';
+            m_grid[y + ROOM_HEIGHT][x + i] = ' ';
         }
     }
     else if (dy == -1) // moving up
@@ -50,7 +50,7 @@ void DungeonGrid::remove_wall_between(int room_y, int room_x, int dy, int dx)
         // Knock down the wall ABOVE the room
         for (int i = 0; i < ROOM_WIDTH; ++i)
         {
-            m_maze[y - WALL][x + i] = ' ';
+            m_grid[y - WALL][x + i] = ' ';
         }
     }
     else if (dx == 1) // moving right
@@ -58,7 +58,7 @@ void DungeonGrid::remove_wall_between(int room_y, int room_x, int dy, int dx)
         // Knock down the wall to the RIGHT of the room
         for (int i = 0; i < ROOM_HEIGHT; ++i)
         {
-            m_maze[y + i][x + ROOM_WIDTH] = ' ';
+            m_grid[y + i][x + ROOM_WIDTH] = ' ';
         }
     }
     else if (dx == -1) // moving left
@@ -66,7 +66,7 @@ void DungeonGrid::remove_wall_between(int room_y, int room_x, int dy, int dx)
         // Knock down the wall to the LEFT of the room
         for (int i = 0; i < ROOM_HEIGHT; ++i)
         {
-            m_maze[y + i][x - WALL] = ' ';
+            m_grid[y + i][x - WALL] = ' ';
         }
     }
 }
@@ -100,7 +100,7 @@ void DungeonGrid::generate_grid(int y, int x)
             remove_wall_between(y, x, dy, dx); // Remove wall between current position and neighbor
             
             // DEBUG VISUALIZATION
-            RenderGrid::draw_grid(m_maze);
+            RenderGrid::draw_grid(m_grid);
             refresh();
             usleep(10000);
 

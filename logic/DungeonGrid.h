@@ -18,11 +18,11 @@ public:
 	void generate_grid(int y, int x);
 
 	// Getters
-	const std::array<std::array<char, SCREEN_WIDTH>, SCREEN_HEIGHT>& get_grid() const { return m_maze; }
+	const std::array<std::array<char, SCREEN_WIDTH>, SCREEN_HEIGHT>& get_grid() const { return m_grid; }
 
 private:
 	// Member variables
-	std::array<std::array<char, SCREEN_WIDTH>, SCREEN_HEIGHT> m_maze;
+	std::array<std::array<char, SCREEN_WIDTH>, SCREEN_HEIGHT> m_grid;
 	bool m_rooms_visited[MAZE_HEIGHT][MAZE_WIDTH] = {{false}};
 };
 
