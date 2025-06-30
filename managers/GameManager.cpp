@@ -99,11 +99,14 @@ void GameManager::handle_collisions()
 {
     for (const auto& bot : m_bot_manager.get_bots())
     {
-        if (check_collision(*bot, m_player))
+        // Grab time and ensure that the collision cooldown time has been met before dealing damage
+        auto current_time = std::chrono::steady_clock::now();
+        auto time_since_last_move = std::chrono::duration_cast<std::chrono::milliseconds>(current_time - bot->get_last_collision_time()).count();
+        if (check_collision(*bot, m_player) && time_since_last_move > bot->get_collision_cooldown())
         {
-            int damage = bot->roll_damage();
-            std::cerr << "Bot damage: " << damage << std::endl;
-            m_player.take_damage(damage);
+            bot->set_last_collision(current_time); // Set new last collision time
+            int damage = bot->roll_damage();       // Set damage to be taken
+            m_player.take_damage(damage);          // Deal damage
             if(m_player.is_dead())
             {
                 m_sound.play(SoundEffect::Death);

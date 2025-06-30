@@ -33,3 +33,21 @@ int Bot::roll_damage() const
     int range = (m_bot_attr.max_damage + 1 - m_bot_attr.min_damage);
     return (rand() % range) + m_bot_attr.min_damage; // min damage - max damage
 }
+
+// Gets the last time since collision
+std::chrono::steady_clock::time_point Bot::get_last_collision_time() 
+{
+    return m_last_collision;
+}
+
+// Gets the bots cooldown time for damage dealing
+int Bot::get_collision_cooldown() 
+{
+    return m_bot_attr.cooldown_ms;
+}
+
+// Sets the last time since collision
+void Bot::set_last_collision(std::chrono::steady_clock::time_point collision) 
+{
+    m_last_collision = collision;
+}
